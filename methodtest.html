@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset ="UTF-8">
+        <meta name="description" content="HTML Web page for CSE 134B" >
+        <meta name="keywords" content="HTML" >
+        <meta name="author" content="" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title> Asher's CSE 134 Portfolio Page</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <script defer src="/MethodTest.js"></script>
+
+        <link rel="stylesheet" href="/defaultstyle.css">
+
+
+    </head>
+    
+    <!-- Content here-->
+    <body> 
+        <header>
+            <h1> Asher Av</h1>
+            <nav>
+                <ul class="nav-ul">
+                    <li class="nav-li"><a class="nav-link" href="/index.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-link" href="/Projects.html"> Projects</a></li>
+                    <li class="nav-li"><a class="nav-link" href="/Contact.html"> Contact</a></li>
+                    <li class="nav-li"><a class="active-link" href="/methodtest.html"> Method Test</a></li>
+                    <li class="nav-li"><a class="nav-link" href="/webcomponent.html"> Web Component</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <main>
+            <h2>HTTP with JavaScript</h2> 
+
+            <section id="http-section">
+            <form id="myForm" action="https://httpbin.org/post" method="post">
+                <label for="record_id_field">id:</label>
+                <input type="number" value="0" min="0" id="record_id_field" name="record_id"><br>
+                <label for="article_name_field">Article name:</label>
+                <input type="text" value="" id="article_name_field" name="article_name"><br>
+                <label for="article_body_field">Article body:</label><br>
+                <textarea id="article_body_field" name="article_body" rows="10" cols="50" placeholder="Write article here..."></textarea><br>
+
+                <label for="date_field"></label>
+                <input type="hidden" id="date_field" name="date"><br> 
+                
+                <input type="button" formmethod="post"id="PostBtn" value="PostBtn" onclick="postRequest()">
+                <input type="button" formmethod="get" id="GetBtn" value="GetBtn" onclick="getRequest()">
+                <input type="button" formmethod="post" id="PutBtn" value="PutBtn" onclick="putRequest()">
+                <input type="button" formmethod="get" id="DeleteBtn" value="DeleteBtn" onclick="deleteRequest()">
+
+            </form> 
+            </section>
+            <section>
+            <output> 
+                <pre id="Response">  </pre>
+            </output>
+            </section>
+            
+        </main>
+
+
+
+        <footer> 
+            <p>This page was made by Asher Av</p>
+        </footer>
+    </body>
+
+
+
+
+</html>
