@@ -402,6 +402,6 @@ input[type="button"]:hover {
 }
 
 pre{
-    background-color: var(--header-color);
+    background-color: black;
     color:var(--background-color);
 }
