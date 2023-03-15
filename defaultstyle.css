@@ -404,4 +404,5 @@ input[type="button"]:hover {
 pre{
     background-color: black;
     color:var(--background-color);
+    white-space: break-spaces;
 }

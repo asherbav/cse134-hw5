@@ -16,7 +16,7 @@ let shadowButton = customButton.shadowRoot;
 
 customButton.addEventListener("click", () => {
     count+=1;
-    console.log(count);
+    //console.log(count);
     shadowButton.innerHTML= `<button>Times Clicked:<slot> ${count}</slot></button>`;
 });
 

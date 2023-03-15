@@ -1,20 +1,30 @@
 let currentDate = new Date(Date.now());
 
 document.getElementById("date_field").value= currentDate;
-//document.getElementById("dateout").innerHTML= "Date: "+ currentDate;
 
-const form = document.getElementById("myForm");
 var a_id = document.getElementById("record_id_field");
 let a_name = document.getElementById("article_name_field");
 let a_body = document.getElementById("article_body_field");
 let a_date = document.getElementById("date_field")
 
 
-
+// Creates new XMLHTTPRequest
 function createXHR(){
     try{ return new XMLHttpRequest(); } catch(e){}
     alert("XMLHttpRequest not supported");
     return null;
+}
+// Produces an encoded URI from input fields
+function formURI(el){
+    info = el.name + "=" +encodeURIComponent(el.value) +"&";
+    return info;
+}
+
+function handlePost(xhr){
+    if(xhr.readyState ==4 && xhr.status ==200){
+        document.getElementById("Response").innerHTML= "POST Response URL: "+ xhr.responseURL +"<br>"+ "POST Response Text:" +"<br></br>"+ xhr.responseText;
+        console.log('POST Request Received')
+    }
 }
 
 function handleGet(xhr){
@@ -23,16 +33,6 @@ function handleGet(xhr){
         //var data = JSON.parse(xhr.response);
         document.getElementById("Response").innerHTML = "GET Response URL: "+ xhr.responseURL +"<br>"+ "GET Response Text: "+"<br></br>"+ xhr.responseText;
         console.log("GET Response Received");
-    }
-}
-
-function handlePost(xhr){
-    if(xhr.readyState ==4 && xhr.status ==200){
-        //var data = JSON.parse(xhr.response);
-        //console.log(xhr.response);
-        //console.log(xhr.responseText);
-        document.getElementById("Response").innerHTML= "POST Response URL: "+ xhr.responseURL +"<br>"+ "POST Response Text:" +"<br></br>"+ xhr.responseText;
-        console.log('POST Request Received')
     }
 }
 
@@ -53,10 +53,28 @@ function handleDelete(xhr){
     }
 }
 
+/* 
+onclick functions
+*/ 
+function postRequest(){
 
-function formURI(el){
-    info = el.name + "=" +encodeURIComponent(el.value) +"&";
-    return info;
+    document.getElementById("Response").innerHTML= "Waiting for response...";
+    document.getElementById("date_field").value= currentDate;
+
+    info = formURI(a_id) + formURI(a_name) + formURI(a_body) + formURI(a_date);
+    //console.log("URI sent: " + info);
+
+    var xhr = createXHR();
+
+    if(xhr){
+        xhr.open("POST","https://httpbin.org/post",true );
+        
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function(){handlePost(xhr)};
+        xhr.timeout=15000;
+        xhr.send(info);
+        console.log("POST Response sent");
+    }
 }
 
 function getRequest(){
@@ -70,31 +88,11 @@ function getRequest(){
         //xhr.getAllResponseHeaders();
         
         xhr.onreadystatechange = function(){handleGet(xhr)};
+        xhr.timeout=15000;
         xhr.send();
         console.log('GET Request sent')
     }
 
-}
-
-function postRequest(){
-
-    document.getElementById("Response").innerHTML= "Waiting for response...";
-    document.getElementById("date_field").value= currentDate;
-
-    info = formURI(a_id) + formURI(a_name) + formURI(a_body) + formURI(a_date);
-    console.log("URI sent: " + info);
-
-    var xhr = createXHR();
-
-    if(xhr){
-        xhr.open("POST","https://httpbin.org/post",true );
-        
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function(){handlePost(xhr)};
-        xhr.timeout=15000;
-        xhr.send(info);
-        console.log("POST Response sent");
-    }
 }
 
 function putRequest(){
