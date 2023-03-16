@@ -3,8 +3,13 @@
 - PID: A16047586
 - Netlify: https://clever-duckanoo-d5453b.netlify.app/
 - Notes:
-  - JavaScript for methodtest.html is found in the MethodTest.js
   - Part 1 methodtest.html:
+    - JavaScript for methodtest.html is found in the Tests.js and Methods.js
+    - Tests.js is the src javascript file for methodtest.html:
+      -  Contains eventListeners and references to ids
+      -  imports functions from Methods.js and exports id references to Methods.js
+    - Methods.js contains function implementation:
+      -  imports id references from Tests.js and exports functions to Tests.js
     - Console logs when a request is sent and/or received, timeout occurs after 15s 
     - Output appears at the bottom before the footer after clicking button 
       - Displays the response URL

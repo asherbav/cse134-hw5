@@ -1,4 +1,4 @@
-import {a_id, a_body, a_date, a_name} from "/tests.js"
+import {a_id, a_body, a_date, a_name} from "/Tests.js"
 
 // Creates new XMLHTTPRequest
 function createXHR(){
