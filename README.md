@@ -30,3 +30,4 @@
       - Associated with deleteRequest() and handleDelete() functions
   - Part 2 webcomponent.html: 
     - JavaScript found in ButtonCount.js file
+    - button-count custom element is found inside the main section
