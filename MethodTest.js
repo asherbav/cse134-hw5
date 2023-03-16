@@ -1,7 +1,3 @@
-// For date
-let currentDate = new Date(Date.now());
-document.getElementById("date_field").value= currentDate;
-
 // For input fields tags
 let a_id = document.getElementById("record_id_field");
 let a_name = document.getElementById("article_name_field");
@@ -55,7 +51,7 @@ function handleDelete(xhr){
 // Performs post request
 function postRequest(){
     document.getElementById("Response").innerHTML= "Waiting for response...";
-    document.getElementById("date_field").value= currentDate;
+    document.getElementById("date_field").value= new Date(Date.now());
     info = formURI(a_id) + formURI(a_name) + formURI(a_body) + formURI(a_date);
     //console.log("URI sent: " + info);
 
@@ -74,7 +70,7 @@ function postRequest(){
 // Performs get request
 function getRequest(){
     var xhr = createXHR();
-    document.getElementById("date_field").value= currentDate;
+    document.getElementById("date_field").value= new Date(Date.now());
     info = formURI(a_id);
     //console.log("URI sent: " + info);
 
@@ -91,7 +87,7 @@ function getRequest(){
 // Performs put request
 function putRequest(){
     document.getElementById("Response").innerHTML= "Waiting for response...";
-    document.getElementById("date_field").value= currentDate;
+    document.getElementById("date_field").value= new Date(Date.now());
     var xhr = createXHR();
 
     info = formURI(a_id) + formURI(a_name) + formURI(a_body) + formURI(a_date);
@@ -110,7 +106,7 @@ function putRequest(){
 // Performs delete request
 function deleteRequest(){
     document.getElementById("Response").innerHTML= "Waiting for response...";
-    document.getElementById("date_field").value= currentDate;
+    document.getElementById("date_field").value= new Date(Date.now());
     var xhr = createXHR();
 
     info = formURI(a_id);
